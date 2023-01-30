@@ -29,7 +29,7 @@ There are two main functions: `lyapunov_solve(x, step_sz, period, ...)`, which a
 ### Assessing the model
 <br>
 
-![lyapunov_solve](img/lyapunov_solve_comparison.png | width=200)
+![lyapunov_solve](img/lyapunov_solve_comparison.png)
 
 Fig. 1. Estimation using the `lyapunov_solve` function with fine-tuning for the indicative time period of the dynamic system. A characteristic time for the Lorenz system is 0.5 s, and for the Roessler system, 6 s.
 
