@@ -5,9 +5,7 @@
 
 Mathematical chaos has a variety of definitions. The definition given by Strogatz says:
 
-<pre><b>Chaos</b> is aperiodic long-term behavior in a deterministic system that exhibits sensitive dependence on initial conditions [2].
-</pre>
-
+<b>Chaos</b> is aperiodic long-term behavior in a deterministic system that exhibits sensitive dependence on initial conditions [2].
 
 Based on this definition, for any two starting points that are close in space, as the system progresses through time, these trajectories will diverge from each other at an exponential rate. In lay terms, this is the butterfly effect. Chaotic systems often appear in nature and are interesting for a variety of reasons.
 
