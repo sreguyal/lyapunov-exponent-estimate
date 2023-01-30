@@ -16,7 +16,7 @@ A common measure for chaos is the **Lyapunov exponent**, which is roughly define
 
 Wolf et al. demonstrated a method to computationally estimate the Lyapunov exponent of timeseries data, based on a derived method that requires differential equations of the system [1]. 
 
-The original paper included code written in Fortran. I have ported this code to Python for ease of inclusion in modern-day projects. 
+### The original paper included code written in Fortran. I have ported this code to Python for ease of inclusion in modern-day projects. 
 
 There are two main functions: `lyapunov_solve(x, step_sz, period, ...)`, which allows for finetuning of parameters described in the paper, and can achieve high accuracy for dynamic systems with known Lyapunov exponents. The other is `lyapunov_solve_unknown(x, step_sz)`, where you only need timeseries data and the time interval between samples. It is more inaccurate, but could be useful when automating a search for chaotic systems, where the only necessary information is the positivity of the exponent.
 
