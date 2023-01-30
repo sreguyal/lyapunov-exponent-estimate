@@ -29,12 +29,12 @@ There are two main functions: `lyapunov_solve(x, step_sz, period, ...)`, which a
 ### Assessing the model
 <br>
 
-<img src="img/lyapunov_solve_comparison.png" width="300"/>
+<img src="img/lyapunov_solve_comparison.png" width="500"/>
 
 Fig. 1. Estimation using the `lyapunov_solve` function with fine-tuning for the indicative time period of the dynamic system. A characteristic time for the Lorenz system is 0.5 s, and for the Roessler system, 6 s.
 
 
-<img src="img/lyapunov_replace.png" width="200" />
+<img src="img/lyapunov_replace.png" width="400" />
 
 
 Fig. 2. Visualization of the primary axis replacement process in `lyapunov_solve`. The red point marks the fiducial trajectory, the blue line marks the evolved primary axis, and the orange line represents the "orthonormalized" primary axis.
