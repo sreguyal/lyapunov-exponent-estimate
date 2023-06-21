@@ -1,31 +1,36 @@
 # lyapunov-exponent-estimate
-## Estimating largest Lyapunov exponent of time series data in Python using the method of Wolf et al. [1]
 
-<br>
+Estimating largest Lyapunov exponent of time series data in Python using the method of Wolf et al. [1]
 
-Mathematical chaos has a variety of definitions. The definition given by Strogatz says:
+
+## Background
+
+Mathematical chaos has a variety of definitions. The definition given by Strogatz states:
 
 <b>Chaos</b> is aperiodic long-term behavior in a deterministic system that exhibits sensitive dependence on initial conditions [2].
 
-Based on this definition, for any two starting points that are close in space, as the system progresses through time, these trajectories will diverge from each other at an exponential rate. In lay terms, this is the butterfly effect. Chaotic systems often appear in nature and are interesting for a variety of reasons.
+Based on this definition, for any two starting points that are close in space, as the system progresses through time, these trajectories will diverge from each other at an exponential rate. This is known in layman's terms as the butterfly effect.
 
 A common measure for chaos is the **Lyapunov exponent**, which is roughly defined as the natural log of the divergence of two trajectories. For example, the Lorenz attractor has a Lyapunov exponent of 2.16. A periodic dynamic system or a dynamic system with a stable attracting point, on the other hand, would not have a positive exponent.
 
-### Knowing this, you might wonder if some experimental data could be exhibiting chaotic behavior, and if this could be detected with a positive Lyapunov exponent.
+***Knowing this, you might wonder if you can identify chaotic behavior in experimental data by estimating Lyapunov exponent.***
 
+## Project Overview
 
-Wolf et al. demonstrated a method to computationally estimate the Lyapunov exponent of timeseries data, based on a derived method that requires differential equations of the system [1]. 
+In the 80's, Wolf et al. demonstrated a method to computationally estimate the Lyapunov exponent of timeseries data, based on a derived method that requires differential equations of the system [1].  The original paper included code that implemented this in Fortran. 
+***This repo ports this code to Python for ease of inclusion in modern-day projects.***
 
-### The original paper included code written in Fortran. I have ported this code to Python for ease of inclusion in modern-day projects. 
+There are two main functions implemented in this codebase: `lyapunov_solve` and `lyapunov_solve_unknown`.
 
-There are two main functions: `lyapunov_solve(x, step_sz, period, ...)`, which allows for finetuning of parameters described in the paper, and can achieve high accuracy for dynamic systems with known Lyapunov exponents. The other is `lyapunov_solve_unknown(x, step_sz)`, where you only need timeseries data and the time interval between samples. It is more inaccurate, but could be useful when automating a search for chaotic systems, where the only necessary information is the positivity of the exponent.
+`lyapunov_solve(x, step_sz, period, ...)` is a function that allows for finetuning of parameters as described in the paper, and can achieve high accuracy for dynamic systems with known Lyapunov exponents. In this function, the period is an "indicative period" of the trajectory orbit. Of course, a truly chaotic system has no period.
+
+`lyapunov_solve_unknown(x, step_sz)`, in which the indicative period is estimated using FFT, therefore only requiring timeseries data and the time interval between samples. It is more inaccurate, but could be useful when attempting to automate a search for chaotic systems.
 
 <br>
 
 ---
 
-### Assessing the model
-<br>
+## Testing the code
 
 <img src="img/lyapunov_solve_comparison.png" width="500"/>
 
@@ -39,9 +44,8 @@ Fig. 2. Visualization of the primary axis replacement process in `lyapunov_solve
 
 ---
 
-<br>
 
-### Rough Mathematical Background
+## Additional Background on Paper
 
 Given the differential equations, it is possible to derive the spectrum of Lyapunov exponents (corresponding to different vectors of divergence) by evolving a small sphere according to the equations of motion. To control for the divergence in magnitude over time, the vectors are regularly orthonormalized using the Gram-Schmidt procedure.
 
